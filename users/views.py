@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from .forms import UserRegisterForm,UserUpdateForm,ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth  import logout
 
 def register(request):
     if request.method == 'POST':
@@ -35,3 +36,8 @@ def profile(request):
     }
     return render(request,'users/profile.html',context)
 
+
+
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
